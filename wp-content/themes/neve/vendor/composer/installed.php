@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'codeinwp/neve',
+        'pretty_version' => 'v3.3.7',
+        'version' => '3.3.7.0',
+        'reference' => 'af009cd0153802d3002ed8594c9c2a7abe7cdc74',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'codeinwp/neve' => array(
+            'pretty_version' => 'v3.3.7',
+            'version' => '3.3.7.0',
+            'reference' => 'af009cd0153802d3002ed8594c9c2a7abe7cdc74',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'codeinwp/themeisle-sdk' => array(
+            'pretty_version' => '3.2.28',
+            'version' => '3.2.28.0',
+            'reference' => '89aafa06d90d8b2d79804e6030d5f3610f596434',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../codeinwp/themeisle-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wptt/webfont-loader' => array(
+            'pretty_version' => 'v1.1.2',
+            'version' => '1.1.2.0',
+            'reference' => '780e564bf0554c419ef447c2b5b768b497ecee40',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../wptt/webfont-loader',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
