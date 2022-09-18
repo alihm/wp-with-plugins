@@ -1,4 +1,4 @@
-Wordpress with plugins
+Dockerized Wordpress with plugins
 
 ## Pre-installed plugins:
 
@@ -29,7 +29,7 @@ Wordpress with plugins
 * Hestia
 * Royal Elementor Kit
 * Storefront
-* ZakraVersion
+* Zakra
 * Twenty Twenty
 * Twenty Twenty-One
 * Twenty Twenty-Two
