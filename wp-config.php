@@ -1,3 +1,4 @@
+<?php
 /**
  * The base configuration for WordPress
  *
@@ -24,18 +25,18 @@
 
 // a helper function to lookup "env_FILE", "env", then fallback
 if (!function_exists('getenv_docker')) {
-        // https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)
-        function getenv_docker($env, $default) {
-                if ($fileEnv = getenv($env . '_FILE')) {
-                        return rtrim(file_get_contents($fileEnv), "\r\n");
-                }
-                else if (($val = getenv($env)) !== false) {
-                        return $val;
-                }
-                else {
-                        return $default;
-                }
-        }
+	// https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)
+	function getenv_docker($env, $default) {
+		if ($fileEnv = getenv($env . '_FILE')) {
+			return rtrim(file_get_contents($fileEnv), "\r\n");
+		}
+		else if (($val = getenv($env)) !== false) {
+			return $val;
+		}
+		else {
+			return $default;
+		}
+	}
 }
 
 // ** Database settings - You can get this info from your web host ** //
@@ -74,14 +75,14 @@ define( 'DB_COLLATE', getenv_docker('WORDPRESS_DB_COLLATE', '') );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         '45b562104bf6bc5bd8377b9eea84d67b47f20ac2') );
-define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  '3c45d62a174d18f3b94e350989a3d7dba17cde1e') );
-define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    '3abe5efc6c9f586887fe2114d66e1810724f58e1') );
-define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        '1ae8294cc56d25d8678e34bae51c0364a04c8d5c') );
-define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        '591a7adf80d71f9864557f8c8477792088cdf998') );
-define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', '6fdfe0b2212776de49a7eddca88636745b122d4e') );
-define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   'e63a9d6eb71663393a0293dda1b6bf33d4389329') );
-define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'f500ab4408674564abbd29ee7e925a7b581ee4cf') );
+define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         '974cc9361d6797c406263e709b176264348f1da3') );
+define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  'f2208cc4d72c724cee71aa30a902a5191446f593') );
+define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    '352d82ef04e4a5413e19db8592c39411919d2c85') );
+define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        'ece871740627976abf36b6fd1edfcfd78d0550db') );
+define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        '645e4ea04429a04f219a5732f71b77ca9b50402a') );
+define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', '000a1524071c9fd81c2f2be043a997a0e94675c4') );
+define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   '57e76ae81687414e8f7c37c90afae63f9b8a5d6a') );
+define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'bd0b3f068e3e4eac8bb6fbc89dc7ba3744eb2a54') );
 // (See also https://wordpress.stackexchange.com/a/152905/199287)
 
 /**#@-*/
@@ -113,20 +114,19 @@ define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
 // If we're behind a proxy server and using HTTPS, we need to alert WordPress of that fact
 // see also https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
-        $_SERVER['HTTPS'] = 'on';
+	$_SERVER['HTTPS'] = 'on';
 }
 // (we include this by default because reverse proxying is extremely common in container environments)
 
 if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
-        // eval($configExtra);
-
+	// eval($configExtra);
 }
 $_SERVER['HTTPS'] = 'on';
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-        define( 'ABSPATH', __DIR__ . '/' );
+	define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */
