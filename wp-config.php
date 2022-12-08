@@ -122,8 +122,8 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 	// eval($configExtra);
 }
 // $_SERVER['HTTPS'] = 'on';
-define( 'WP_DEBUG', true);
-define( 'WP_DEBUG_LOG', true );
+// define( 'WP_DEBUG', true);
+// define( 'WP_DEBUG_LOG', true );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
