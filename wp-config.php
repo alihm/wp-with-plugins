@@ -122,6 +122,9 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 	// eval($configExtra);
 }
 // $_SERVER['HTTPS'] = 'on';
+define('DISABLE_WP_CRON', true);
+define( 'WP_MEMORY_LIMIT', '256M' );
+
 // define( 'WP_DEBUG', true);
 // define( 'WP_DEBUG_LOG', true );
 /* That's all, stop editing! Happy publishing. */
