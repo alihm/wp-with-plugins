@@ -1,4 +1,4 @@
-FROM wordpress:php8.0-apache
+FROM wordpress:6-php8.2-apache
 
 # COPY ./wp-content/ /usr/src/wordpress/wp-content
 COPY ./wp-config.php /usr/src/wordpress/
