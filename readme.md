@@ -1,5 +1,1 @@
 Dockerized Wordpress for Flux
-
-
-
-
