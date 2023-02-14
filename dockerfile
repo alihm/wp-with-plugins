@@ -5,6 +5,9 @@ FROM bitnami/wordpress-nginx:latest
 ENV WORDPRESS_DATABASE_USER=root
 ENV WORDPRESS_DATABASE_PASSWORD=123secret
 ENV WORDPRESS_DATABASE_NAME=test_db
+ENV PHP_UPLOAD_MAX_FILESIZE=512M
+ENV WORDPRESS_EXTRA_WP_CONFIG_CONTENT="define('DISABLE_WP_CRON',true);"
+
  # WORKDIR /var/www/html
 EXPOSE 8080
 CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
