@@ -1,16 +1,15 @@
 FROM bitnami/wordpress-nginx:latest
 
 # COPY ./wp-content/ /usr/src/wordpress/wp-content
-# COPY ./wp-config.php /usr/src/wordpress/
+# COPY ./wp-config.php /opt/bitnami/wordpress/
+COPY ./libwordpress.sh /opt/bitnami/scripts/
 ENV WORDPRESS_DATABASE_USER=root
 ENV WORDPRESS_DATABASE_PASSWORD=secret
 ENV WORDPRESS_DATABASE_NAME=test_db
-ENV MYSQL_CLIENT_DATABASE_PORT_NUMBER=3307
 ENV WORDPRESS_DATABASE_PORT_NUMBER=3307
 ENV PHP_UPLOAD_MAX_FILESIZE=512M
 ENV WORDPRESS_EXTRA_WP_CONFIG_CONTENT="define('DISABLE_WP_CRON',true);"
 ENV WORDPRESS_ENABLE_REVERSE_PROXY=yes
-ENV MYSQL_CLIENT_FLAVOR=mysql
 ENV WORDPRESS_DATA_TO_PERSIST="wp-content"
 
  # WORKDIR /var/www/html
