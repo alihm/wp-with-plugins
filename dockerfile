@@ -2,7 +2,6 @@ FROM bitnami/wordpress-nginx:latest
 
 # COPY ./wp-content/ /usr/src/wordpress/wp-content
 # COPY ./wp-config.php /opt/bitnami/wordpress/
-COPY ./libwordpress.sh /opt/bitnami/scripts/
 ENV WORDPRESS_DATABASE_USER=root
 ENV WORDPRESS_DATABASE_PASSWORD=secret
 ENV WORDPRESS_DATABASE_NAME=test_db
@@ -14,6 +13,7 @@ ENV WORDPRESS_ENABLE_REVERSE_PROXY=yes
 ENV WORDPRESS_OVERRIDE_DATABASE_SETTINGS=yes
 ENV WORDPRESS_RESET_DATA_PERMISSIONS=yes
 ENV WORDPRESS_SKIP_BOOTSTRAP=yes
+COPY ./libwordpress.sh /opt/bitnami/scripts/
 
  # WORKDIR /var/www/html
 EXPOSE 8080
