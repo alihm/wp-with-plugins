@@ -15,6 +15,7 @@ ENV WORDPRESS_RESET_DATA_PERMISSIONS=yes
 ENV WORDPRESS_SKIP_BOOTSTRAP=yes
 COPY ./libwordpress.sh /opt/bitnami/scripts/
 
+RUN chown -R bitnami:daemon /opt/bitnami/wordpress
  # WORKDIR /var/www/html
 EXPOSE 8080
 CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
