@@ -14,7 +14,11 @@ ENV WORDPRESS_ENABLE_REVERSE_PROXY=yes
 ENV WORDPRESS_RESET_DATA_PERMISSIONS=yes
 ENV WORDPRESS_SKIP_INSTALL=yes
 ENV WORDPRESS_SKIP_BOOTSTRAP=yes
+
+USER root
 COPY ./libwordpress.sh /opt/bitnami/scripts/
+
+RUN chown -R daemon /opt/bitnami/wordpress
 # CMD ['sh', '-c', 'chown -R 1001:root /opt/bitnami/wordpress']
  # WORKDIR /var/www/html
 EXPOSE 8080
