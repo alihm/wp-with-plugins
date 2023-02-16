@@ -380,7 +380,7 @@ wordpress_initialize() {
             fi
         else
             info "An already initialized WordPress database was provided, configuration will be skipped"
-            wp_execute core update-db
+            # wp_execute core update-db
         fi
 
         info "Persisting WordPress installation"
