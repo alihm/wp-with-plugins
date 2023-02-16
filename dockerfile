@@ -3,7 +3,7 @@ FROM wordpress:latest
 # COPY ./wp-content/ /usr/src/wordpress/wp-content
 COPY ./wp-config.php /usr/src/wordpress
 ENV WORDPRESS_DB_USER=root
-ENV WORDPRESS_DB_PASSWORD=secret
+ENV WORDPRESS_DB_PASSWORD=123secret
 ENV WORDPRESS_DB_NAME=test_db
 RUN { \
 		echo 'upload_max_filesize = 512M'; \
