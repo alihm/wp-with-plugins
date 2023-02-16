@@ -1,7 +1,7 @@
 FROM bitnami/wordpress-nginx:latest
 
 # COPY ./wp-content/ /usr/src/wordpress/wp-content
-COPY ./wp-config.php /opt/bitnami/wordpress/
+
 ENV WORDPRESS_DATABASE_USER=root
 ENV WORDPRESS_DATABASE_PASSWORD=123secret
 ENV WORDPRESS_DATABASE_NAME=test_db
@@ -17,7 +17,7 @@ ENV WORDPRESS_SKIP_BOOTSTRAP=yes
 
 USER root
 COPY ./libwordpress.sh /opt/bitnami/scripts/
-
+COPY ./wp-config.php /opt/bitnami/wordpress/
 RUN chown -R daemon /opt/bitnami/wordpress
 # CMD ['sh', '-c', 'chown -R 1001:root /opt/bitnami/wordpress']
  # WORKDIR /var/www/html
