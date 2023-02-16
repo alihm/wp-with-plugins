@@ -23,6 +23,7 @@ elif [[ -f /opt/bitnami/scripts/libmariadb.sh ]]; then
     . /opt/bitnami/scripts/libmariadb.sh
 fi
 
+#chown -R 1001 /opt/bitnami/wordpress
 ########################
 # Validate settings in WORDPRESS_* env vars
 # Globals:
