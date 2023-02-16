@@ -142,7 +142,7 @@ define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
 define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/' );
 define( 'WP_AUTO_UPDATE_CORE', false );
 define('DISABLE_WP_CRON',true);
-define( 'WP_MEMORY_LIMIT', '256M' );
+define( 'WP_MEMORY_LIMIT', '1024M' );
 
 // define( 'WP_DEBUG', true);
 // define( 'WP_DEBUG_LOG', true );
