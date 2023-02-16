@@ -384,7 +384,7 @@ wordpress_initialize() {
         fi
 
         info "Persisting WordPress installation"
-        persist_app "$app_name" "$WORDPRESS_DATA_TO_PERSIST"
+        # persist_app "$app_name" "$WORDPRESS_DATA_TO_PERSIST"
 
         # Secure wp-config.php file after persisting data because then we can ensure the commands to work
         # when running the scripts as non-root users
