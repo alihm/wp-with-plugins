@@ -35,7 +35,25 @@ RUN \
  && chmod +x /usr/local/bin/docker-entrypoint-wrapper.sh
 
  # Install & activate WpFastestCache
-
+RUN echo "function run_activate_plugin( \$plugin ) {" >> /usr/src/wordpress/wp-load.php
+RUN echo "  \$plugin = trim( \$plugin );" >> /usr/src/wordpress/wp-load.php
+RUN echo "  \$current = get_option( 'active_plugins' );" >> /usr/src/wordpress/wp-load.php
+RUN echo "  \$plugin = plugin_basename( \$plugin );" >> /usr/src/wordpress/wp-load.php
+RUN echo "  if ( !in_array( \$plugin, \$current ) ) {" >> /usr/src/wordpress/wp-load.php
+RUN echo "    \$current[] = \$plugin;" >> /usr/src/wordpress/wp-load.php
+RUN echo "    sort( \$current );" >> /usr/src/wordpress/wp-load.php
+RUN echo "    do_action( 'activate_plugin', \$plugin );" >> /usr/src/wordpress/wp-load.php
+RUN echo "    update_option( 'active_plugins', \$current );" >> /usr/src/wordpress/wp-load.php
+RUN echo "    do_action( 'activate_' . \$plugin );" >> /usr/src/wordpress/wp-load.php
+RUN echo "    do_action( 'activated_plugin', \$plugin );" >> /usr/src/wordpress/wp-load.php
+# RUN echo "    add_option('WpFastestCache', '{\"wpFastestCacheStatus\":\"on\",\"wpFastestCachePreload_number\":\"4\",\"wpFastestCachePreload_order\":\"\",\"wpFastestCacheMobile\":\"on\",\"wpFastestCacheNewPost_type\":\"all\",\"wpFastestCacheUpdatePost_type\":\"post\",\"wpFastestCacheLanguage\":\"eng\"}');" >> /usr/src/wordpress/wp-load.php
+RUN echo "  }" >> /usr/src/wordpress/wp-load.php
+RUN echo "  return null;" >> /usr/src/wordpress/wp-load.php
+RUN echo "}" >> /usr/src/wordpress/wp-load.php
+RUN echo "if ( !get_option('WpFastestCache')) {" >> /usr/src/wordpress/wp-load.php
+RUN echo "  run_activate_plugin( 'wp-fastest-cache/wpFastestCache.php' );" >> /usr/src/wordpress/wp-load.php
+RUN echo "}" >> /usr/src/wordpress/wp-load.php
+RUN echo "" >> /usr/src/wordpress/wp-load.php
 
 EXPOSE 80
 ENTRYPOINT ["docker-entrypoint-wrapper.sh"]
