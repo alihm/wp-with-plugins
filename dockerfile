@@ -46,14 +46,16 @@ RUN echo "    do_action( 'activate_plugin', \$plugin );" >> /usr/src/wordpress/w
 RUN echo "    update_option( 'active_plugins', \$current );" >> /usr/src/wordpress/wp-load.php
 RUN echo "    do_action( 'activate_' . \$plugin );" >> /usr/src/wordpress/wp-load.php
 RUN echo "    do_action( 'activated_plugin', \$plugin );" >> /usr/src/wordpress/wp-load.php
-# RUN echo "    add_option('WpFastestCache', '{\"wpFastestCacheStatus\":\"on\",\"wpFastestCachePreload_number\":\"4\",\"wpFastestCachePreload_order\":\"\",\"wpFastestCacheMobile\":\"on\",\"wpFastestCacheNewPost_type\":\"all\",\"wpFastestCacheUpdatePost_type\":\"post\",\"wpFastestCacheLanguage\":\"eng\"}');" >> /usr/src/wordpress/wp-load.php
+RUN echo "    add_option('WpFastestCache', '{\"wpFastestCacheStatus\":\"on\",\"wpFastestCachePreload_number\":\"4\",\"wpFastestCachePreload_order\":\"\",\"wpFastestCacheMobile\":\"on\",\"wpFastestCacheNewPost_type\":\"all\",\"wpFastestCacheUpdatePost_type\":\"post\",\"wpFastestCacheLanguage\":\"eng\"}');" >> /usr/src/wordpress/wp-load.php
 RUN echo "  }" >> /usr/src/wordpress/wp-load.php
 RUN echo "  return null;" >> /usr/src/wordpress/wp-load.php
 RUN echo "}" >> /usr/src/wordpress/wp-load.php
-RUN echo "if ( !get_option('WpFastestCache')) {" >> /usr/src/wordpress/wp-load.php
+RUN echo "global \$wpdb;" >> /usr/src/wordpress/wp-load.php
+RUN echo "\$table_name = \$wpdb->prefix.'options';" >> /usr/src/wordpress/wp-load.php
+RUN echo "if (\$wpdb->get_var(\"SHOW TABLES LIKE '\$table_name'\") == \$table_name && !get_option('WpFastestCache')) {" >> /usr/src/wordpress/wp-load.php
 RUN echo "  run_activate_plugin( 'wp-fastest-cache/wpFastestCache.php' );" >> /usr/src/wordpress/wp-load.php
 RUN echo "}" >> /usr/src/wordpress/wp-load.php
-RUN echo "" >> /usr/src/wordpress/wp-load.php
+
 
 EXPOSE 80
 ENTRYPOINT ["docker-entrypoint-wrapper.sh"]
